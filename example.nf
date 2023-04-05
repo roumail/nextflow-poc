@@ -33,7 +33,7 @@ process extractIds {
 
     script:
     """
-    grep '^>' $file_in > ids.txt
+    cat $file_in | grep '^>' > ids.txt
     """
 }
 
@@ -44,9 +44,12 @@ workflow {
 
     // Run the processes in sequence
     countSequences(data_ch)
-    extractIds(data_ch)
+    ids = extractIds(data_ch)
 
     // Print the output
-    countSequences.out.num_sequences.view()
-    extractIds.out.ids_file.view()
+    countSequences.out.num_sequences.view { it -> "Number of sequences: $it" }
+    ids.ids_file.view { it -> "Sequence IDs file: $it" }
+
+    // countSequences.out.num_sequences.view()
+    // ids.out.ids_file.view()
 }
