@@ -1,0 +1,16 @@
+# Ignore Nextflow working directory
+work/
+
+# Ignore hidden Nextflow files
+.nextflow*
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.bak.*
+*.log
+*.rej
+*~
