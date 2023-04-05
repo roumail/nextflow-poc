@@ -48,8 +48,6 @@ workflow {
 
     // Print the output
     countSequences.out.num_sequences.view { it -> "Number of sequences: $it" }
-    ids.ids_file.view { it -> "Sequence IDs file: $it" }
-
-    // countSequences.out.num_sequences.view()
-    // ids.out.ids_file.view()
+    ids.ids_file.view { it -> "Sequence IDs file location: $it" }
+    ids.ids_file.view { it -> "Sequence IDs:\n" + it.text }
 }
